@@ -1,27 +1,28 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Stack, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Colors } from "../../../constants/Colors";
 
 const AppLayout = () => {
   return (
     <Tabs
       screenOptions={{
         headerTitleStyle: {
-          color: "#16a34a",
+          color: Colors.primaryColor,
           fontWeight: "700",
           fontSize: 24,
           textAlign: "center",
         },
         headerRight: () => (
           <Pressable style={{ marginRight: 10 }}>
-            <MaterialIcons name="menu" size={24} color="#16a34a" />
+            <MaterialIcons name="menu" size={24} color={Colors.primaryColor} />
           </Pressable>
         ),
-        tabBarActiveTintColor: "#16a34a",
+        tabBarActiveTintColor: Colors.primaryColor,
         tabBarInactiveTintColor: "#fff",
         tabBarStyle: {
-          backgroundColor: "#16a34a",
+          backgroundColor: Colors.primaryColor,
           height: 60,
         },
         tabBarActiveBackgroundColor: "#fff",
