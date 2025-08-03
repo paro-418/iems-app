@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import HeroCarousal from "../../components/Home/HeroCarousal";
 
 const HomeScreen = () => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      {/*  */}
+      <HeroCarousal />
     </View>
   );
 };
