@@ -1,13 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import HeroCarousal from "../../components/Home/HeroCarousal";
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import HeroCarousal from '../../components/Home/HeroCarousal';
+import Announcement from '../../components/Home/Announcement';
+import AboutUsHome from '../../components/Home/AboutUsHome';
 
 const HomeScreen = () => {
   return (
-    <View>
-      {/*  */}
+    <ScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
       <HeroCarousal />
-    </View>
+      <Announcement />
+      <AboutUsHome />
+    </ScrollView>
   );
 };
 
