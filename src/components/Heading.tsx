@@ -1,16 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import React from 'react';
 import { Colors } from '../../constants/Colors';
 
 interface IHeading {
   heading: string;
   subHeading?: string;
-  headingStyles?: {
-    [key: string]: [value: string];
-  };
-  subHeadingStyles?: {
-    [key: string]: [value: string];
-  };
+  headingStyles?: TextStyle;
+  subHeadingStyles?: TextStyle;
 }
 const Heading = ({
   heading,
