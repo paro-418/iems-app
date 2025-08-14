@@ -3,6 +3,9 @@ import React from 'react';
 import HeroCarousal from '../../components/Home/HeroCarousal';
 import Announcement from '../../components/Home/Announcement';
 import AboutUsHome from '../../components/Home/AboutUsHome';
+import VisionAndMissions from '../../components/AboutUs/VisionAndMissions';
+import CoursesHome from '../../components/Home/CoursesHome';
+import DownloadAdmissionForm from '../../components/DownloadAdmissionForm';
 
 const HomeScreen = () => {
   return (
@@ -14,6 +17,8 @@ const HomeScreen = () => {
       <HeroCarousal />
       <Announcement />
       <AboutUsHome />
+      <VisionAndMissions />
+      <CoursesHome />
     </ScrollView>
   );
 };

@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import { Colors } from '../../../constants/Colors';
 import { router } from 'expo-router';
+import Heading from '../Heading';
 
 const AboutUsHome = () => {
   return (
@@ -29,17 +30,7 @@ const AboutUsHome = () => {
             paddingTop: 24,
           }}
         >
-          <Text
-            style={{
-              color: Colors.primaryColor,
-              textDecorationLine: 'underline',
-              paddingVertical: 1,
-              fontWeight: '800',
-              fontSize: 24,
-            }}
-          >
-            About Us
-          </Text>
+          <Heading heading='About Us' />
         </View>
 
         <Text

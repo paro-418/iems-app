@@ -6,12 +6,12 @@ import {
   Text,
   View,
   Animated,
-} from "react-native";
-import React, { useEffect, useRef } from "react";
-import { Colors } from "../../../constants/Colors";
-import { router } from "expo-router";
+} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Colors } from '../../../constants/Colors';
+import { router } from 'expo-router';
 
-const { height: screenHeight, width: screenWidth } = Dimensions.get("window");
+const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 const HeroCarousal = () => {
   const shakeAnim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -50,25 +50,25 @@ const HeroCarousal = () => {
     >
       <ImageBackground
         style={{
-          width: "100%",
+          width: '100%',
           flex: 1,
         }}
-        source={require("../../../assets/convocation/DSC_4057.webp")}
+        source={require('../../../assets/convocation/DSC_4057.webp')}
       >
         <View style={styles.overlay}>
           <View>
-            <Text style={{ color: "#fff", fontSize: 36, fontWeight: "bold" }}>
+            <Text style={{ color: '#fff', fontSize: 36, fontWeight: 'bold' }}>
               Empowering Environmental and Safety Professionals since 1991
             </Text>
-            <Text style={{ color: "#fff", fontSize: 24, fontWeight: "300" }}>
+            <Text style={{ color: '#fff', fontSize: 24, fontWeight: '300' }}>
               Join us to build a sustainable and safer future
             </Text>
           </View>
           <View style={{ gap: 12 }}>
             <Animated.View style={{ transform: [{ translateX: shakeAnim }] }}>
               <Pressable
-                style={[styles.button, { backgroundColor: "#fff" }]}
-                onPress={() => router.push("courses")}
+                style={[styles.button, { backgroundColor: '#fff' }]}
+                onPress={() => router.push('courses')}
               >
                 <Text
                   style={[styles.buttonText, { color: Colors.primaryColor }]}
@@ -80,7 +80,7 @@ const HeroCarousal = () => {
             <Pressable
               style={[styles.button, { backgroundColor: Colors.primaryColor }]}
             >
-              <Text style={[styles.buttonText, { color: "#fff" }]}>
+              <Text style={[styles.buttonText, { color: '#fff' }]}>
                 View Admission Form
               </Text>
             </Pressable>
@@ -95,23 +95,23 @@ export default HeroCarousal;
 
 const styles = StyleSheet.create({
   overlay: {
-    backgroundColor: "rgba(0,0,0,0.6 )",
+    backgroundColor: 'rgba(0,0,0,0.6 )',
     paddingHorizontal: 36,
-    width: "100%",
+    width: '100%',
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 32,
   },
   button: {
-    paddingHorizontal: 20,
-    paddingVertical: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     borderRadius: 4,
     width: screenWidth * 0.7,
   },
   buttonText: {
-    fontWeight: "600",
-    textAlign: "center",
+    fontWeight: '600',
+    textAlign: 'center',
     fontSize: 16,
   },
 });
