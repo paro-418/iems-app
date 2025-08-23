@@ -4,6 +4,8 @@ import AboutUsLanding from '../../components/AboutUs/AboutUsLanding';
 import VisionAndMissions from '../../components/AboutUs/VisionAndMissions';
 import MessageFromLeaderships from '../../components/AboutUs/MessageFromLeaderships';
 import Gallery from '../../components/AboutUs/Gallery';
+import ReachUs from '../../components/ReachUs';
+import Footer from '../../components/Footer';
 
 const AboutUsScreen = () => {
   const sections = [
@@ -11,6 +13,8 @@ const AboutUsScreen = () => {
     { key: 'vision', component: <VisionAndMissions /> },
     { key: 'messages', component: <MessageFromLeaderships /> },
     { key: 'gallery', component: <Gallery /> },
+    { key: 'getInTouch', component: <ReachUs /> },
+    { key: 'footer', component: <Footer /> },
   ];
 
   return (
