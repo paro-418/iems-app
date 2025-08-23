@@ -17,25 +17,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   IFormField,
-  interestedCoursesNames,
   interestedCoursesNameTypes,
   TPotentialStudentForm,
 } from '../lib/interfaces/PotentialStudents.interface';
-import z from 'zod';
 import { Colors } from '../../constants/Colors';
-
-export const PotentialStudentFormSchema = z.object({
-  name: z
-    .string()
-    .min(3, 'Name is too short, must contain at least 3 characters'),
-  phoneNo: z
-    .string()
-    .min(10, 'Phone number must be at least 10 digits')
-    .max(10, 'Phone number must be at most 10 digits'),
-  email: z.email('Invalid email address'),
-  interestedCourse: z.enum(interestedCoursesNames).default('all'),
-  inquiryText: z.string().min(0).default('').optional(),
-});
+import { PotentialStudentFormSchema } from '../lib/schema/PotentialStudentFormSchema.schema';
+import { FormField } from './FormField';
 
 interface IDownloadAdmissionForm {
   courseType: interestedCoursesNameTypes;
@@ -73,46 +60,6 @@ const DownloadAdmissionForm = ({
       setLoading(false);
     }
   };
-
-  const FormField = ({
-    name,
-    label,
-    placeholder,
-    keyboardType = 'default',
-    maxLength,
-    multiline = false,
-    secureTextEntry = false,
-  }: IFormField) => (
-    <Controller
-      control={form.control}
-      name={name}
-      render={({
-        field: { onChange, onBlur, value },
-        fieldState: { error },
-      }) => (
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>{label}</Text>
-          <TextInput
-            style={[
-              styles.input,
-              error && styles.inputError,
-              multiline && styles.multilineInput,
-            ]}
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            placeholder={placeholder}
-            keyboardType={keyboardType}
-            maxLength={maxLength}
-            multiline={multiline}
-            numberOfLines={multiline ? 4 : 1}
-            secureTextEntry={secureTextEntry}
-          />
-          {error && <Text style={styles.errorText}>{error.message}</Text>}
-        </View>
-      )}
-    />
-  );
 
   return (
     <Modal
@@ -155,7 +102,20 @@ const DownloadAdmissionForm = ({
               style={styles.formContainer}
               showsVerticalScrollIndicator={false}
             >
-              <FormField name='name' label='Name' placeholder='Your name' />
+              <FormField
+                name='name'
+                label='Name'
+                placeholder='Your name'
+                form={form}
+                styles={{
+                  errorText: styles.errorText,
+                  input: styles.input,
+                  inputContainer: styles.inputContainer,
+                  inputError: styles.inputError,
+                  label: styles.label,
+                  multilineInput: styles.multilineInput,
+                }}
+              />
 
               <FormField
                 name='phoneNo'
@@ -163,6 +123,15 @@ const DownloadAdmissionForm = ({
                 placeholder='Your phone number'
                 keyboardType='phone-pad'
                 maxLength={10}
+                form={form}
+                styles={{
+                  errorText: styles.errorText,
+                  input: styles.input,
+                  inputContainer: styles.inputContainer,
+                  inputError: styles.inputError,
+                  label: styles.label,
+                  multilineInput: styles.multilineInput,
+                }}
               />
 
               <FormField
@@ -170,6 +139,15 @@ const DownloadAdmissionForm = ({
                 label='Email'
                 placeholder='Your email'
                 keyboardType='email-address'
+                form={form}
+                styles={{
+                  errorText: styles.errorText,
+                  input: styles.input,
+                  inputContainer: styles.inputContainer,
+                  inputError: styles.inputError,
+                  label: styles.label,
+                  multilineInput: styles.multilineInput,
+                }}
               />
             </ScrollView>
 

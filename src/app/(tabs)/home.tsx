@@ -5,8 +5,8 @@ import Announcement from '../../components/Home/Announcement';
 import AboutUsHome from '../../components/Home/AboutUsHome';
 import VisionAndMissions from '../../components/AboutUs/VisionAndMissions';
 import CoursesHome from '../../components/Home/CoursesHome';
-import DownloadAdmissionForm from '../../components/DownloadAdmissionForm';
 import GalleryHome from '../../components/GalleryHome';
+import ReachUs from '../../components/ReachUs';
 
 const HomeScreen = () => {
   return (
@@ -21,6 +21,7 @@ const HomeScreen = () => {
       <VisionAndMissions />
       <CoursesHome />
       <GalleryHome />
+      <ReachUs />
     </ScrollView>
   );
 };
