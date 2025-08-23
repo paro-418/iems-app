@@ -7,10 +7,13 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import React, { useRef, useState, useEffect } from 'react';
 import { Colors } from '../../../constants/Colors';
 import Heading from '../Heading';
+import { Shadow } from 'react-native-shadow-2';
+import { router } from 'expo-router';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -137,6 +140,17 @@ const MessageFromLeaderships = () => {
         })}
       />
       {renderDotIndicator()}
+
+      <View style={{ marginHorizontal: 'auto', marginTop: 12 }}>
+        <Shadow distance={4} startColor='rgba(0,0,0,0.1)'>
+          <Pressable
+            style={styles.meetTeamButton}
+            onPress={() => router.push('team')}
+          >
+            <Text style={styles.meetTeamText}>Meet our Team</Text>
+          </Pressable>
+        </Shadow>
+      </View>
     </View>
   );
 };
@@ -193,6 +207,21 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
+  },
+  meetTeamButton: {
+    marginHorizontal: 'auto',
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 4,
+    width: SCREEN_WIDTH * 0.7,
+    borderWidth: 1,
+    borderColor: Colors.primaryColor,
+  },
+  meetTeamText: {
+    color: Colors.primaryColor,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
