@@ -3,12 +3,14 @@ import React from 'react';
 import AboutUsLanding from '../../components/AboutUs/AboutUsLanding';
 import VisionAndMissions from '../../components/AboutUs/VisionAndMissions';
 import MessageFromLeaderships from '../../components/AboutUs/MessageFromLeaderships';
+import Gallery from '../../components/AboutUs/Gallery';
 
 const AboutUsScreen = () => {
   const sections = [
     { key: 'landing', component: <AboutUsLanding /> },
     { key: 'vision', component: <VisionAndMissions /> },
     { key: 'messages', component: <MessageFromLeaderships /> },
+    { key: 'gallery', component: <Gallery /> },
   ];
 
   return (
