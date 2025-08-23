@@ -2,17 +2,36 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Heading from './Heading';
 import InquiryForm from './InquiryForm';
+import Map from './Map';
 
 const ReachUs = () => {
   return (
-    <View style={{ gap: 16, paddingVertical: 12, paddingHorizontal: 16 }}>
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Heading heading='Get in touch' />
-      </View>
-      <View>
+    <View
+      style={{
+        gap: 16,
+        paddingHorizontal: 16,
+        marginTop: 24,
+      }}
+    >
+      <View
+        style={{
+          gap: 16,
+          flex: 1,
+        }}
+      >
         <InquiryForm />
-        <View>
-          <Text>google map</Text>
+        <View
+          style={{
+            flex: 1,
+            padding: 8,
+            borderRadius: 8,
+            marginTop: 16,
+            backgroundColor: '#fff',
+            overflow: 'hidden',
+          }}
+        >
+          <Heading heading='Visit Us' />
+          <Map />
         </View>
       </View>
     </View>

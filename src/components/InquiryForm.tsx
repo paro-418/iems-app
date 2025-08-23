@@ -16,6 +16,7 @@ import { PotentialStudentFormSchema } from '../lib/schema/PotentialStudentFormSc
 import { FormField } from './FormField';
 import { Colors } from '../../constants/Colors';
 import { TPotentialStudentForm } from '../lib/interfaces/PotentialStudents.interface';
+import Heading from './Heading';
 
 const InquiryForm = () => {
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,9 @@ const InquiryForm = () => {
   return (
     <View style={styles.formContainer}>
       {/* Header */}
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Heading heading='Get in touch' />
+      </View>
       <View style={styles.header}>
         <Text style={styles.description}>Have an Inquiry?</Text>
       </View>
@@ -180,12 +184,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 12,
     overflow: 'hidden',
+    paddingTop: 16,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     padding: 20,
+    paddingTop: 0,
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
   },

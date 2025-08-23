@@ -30,6 +30,10 @@ export const FormField = ({
               styles.input,
               error && styles.inputError,
               multiline && styles.multilineInput,
+              {
+                borderWidth: 1,
+                borderColor: 'gray',
+              },
             ]}
           >
             {options?.map((o) => (
