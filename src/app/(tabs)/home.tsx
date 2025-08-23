@@ -7,6 +7,7 @@ import VisionAndMissions from '../../components/AboutUs/VisionAndMissions';
 import CoursesHome from '../../components/Home/CoursesHome';
 import GalleryHome from '../../components/GalleryHome';
 import ReachUs from '../../components/ReachUs';
+import Accordion from '../../components/Accordion';
 
 const HomeScreen = () => {
   return (
@@ -22,6 +23,7 @@ const HomeScreen = () => {
       <CoursesHome />
       <GalleryHome />
       <ReachUs />
+      <Accordion />
     </ScrollView>
   );
 };
