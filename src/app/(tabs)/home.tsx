@@ -8,6 +8,7 @@ import CoursesHome from '../../components/Home/CoursesHome';
 import GalleryHome from '../../components/GalleryHome';
 import ReachUs from '../../components/ReachUs';
 import Accordion from '../../components/Accordion';
+import Footer from '../../components/Footer';
 
 const HomeScreen = () => {
   return (
@@ -24,6 +25,7 @@ const HomeScreen = () => {
       <GalleryHome />
       <ReachUs />
       <Accordion />
+      <Footer />
     </ScrollView>
   );
 };

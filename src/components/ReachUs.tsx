@@ -9,7 +9,7 @@ const ReachUs = () => {
     <View
       style={{
         gap: 16,
-        paddingHorizontal: 16,
+        padding: 16,
         marginTop: 24,
       }}
     >
