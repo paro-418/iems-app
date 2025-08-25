@@ -11,6 +11,7 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
+  PermissionsAndroid,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
@@ -23,6 +24,9 @@ import {
 import { Colors } from '../../constants/Colors';
 import { PotentialStudentFormSchema } from '../lib/schema/PotentialStudentFormSchema.schema';
 import { FormField } from './FormField';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
+import { Asset } from 'expo-asset';
 
 interface IDownloadAdmissionForm {
   courseType: interestedCoursesNameTypes;
@@ -53,11 +57,65 @@ const DownloadAdmissionForm = ({
       setLoading(true);
       console.log('formData', formData);
       // call api to save data
+      await downloadPdf();
     } catch (error) {
       Alert.alert('Error', 'Failed to submit form. Please try again.');
       console.error('Form submission error:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const downloadPdf = async () => {
+    try {
+      const PDFAssets: Record<
+        Exclude<interestedCoursesNameTypes, 'all'>,
+        any
+      > = {
+        PGDIS: require('../../assets/forms/PGDIS.pdf'),
+        PGDEM: require('../../assets/forms/PGDEM.pdf'),
+      };
+
+      if (courseType === 'all') {
+        return;
+      }
+
+      const selectedPdfAsset = PDFAssets[courseType];
+      const fileName = `IEMS_${courseType}_Admission_Form.pdf`;
+      const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+
+      // Convert asset to Asset object and download
+      const asset = Asset.fromModule(selectedPdfAsset);
+      await asset.downloadAsync();
+
+      if (!asset.localUri) {
+        throw new Error('Failed to download asset');
+      }
+
+      // Copy file to document directory
+      await FileSystem.copyAsync({
+        from: asset.localUri,
+        to: fileUri,
+      });
+
+      // Share the file
+      await Sharing.shareAsync(fileUri, {
+        mimeType: 'application/pdf',
+        dialogTitle: 'Download Admission Form',
+      });
+
+      Alert.alert('Success', 'Form downloaded successfully!', [
+        {
+          text: 'OK',
+          onPress: () => {
+            form.reset();
+            handelModalVisibility(false);
+          },
+        },
+      ]);
+    } catch (error) {
+      console.error('Download error:', error);
+      Alert.alert('Error', 'Failed to download form. Please try again.');
     }
   };
 

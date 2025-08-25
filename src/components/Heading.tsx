@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextStyle, View } from 'react-native';
+import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import React from 'react';
 import { Colors } from '../../constants/Colors';
 
@@ -7,15 +7,17 @@ interface IHeading {
   subHeading?: string;
   headingStyles?: TextStyle;
   subHeadingStyles?: TextStyle;
+  headingContainer?: ViewStyle;
 }
 const Heading = ({
   heading,
   headingStyles,
   subHeading,
   subHeadingStyles,
+  headingContainer,
 }: IHeading) => {
   return (
-    <View style={styles.headingContainer}>
+    <View style={[styles.headingContainer, headingContainer]}>
       <Text style={[styles.heading, headingStyles]}>{heading}</Text>
       <Text style={[styles.subHeading, subHeadingStyles]}>{subHeading}</Text>
     </View>
