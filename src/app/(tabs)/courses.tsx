@@ -42,7 +42,11 @@ const CoursesScreen = () => {
           heading='Courses we offer'
           headingStyles={{ padding: 0 }}
           subHeading='IEMS offers industry-relevant programs designed to equip students with the knowledge and skills needed to address environmental and safety challenges. Our courses combine theoretical knowledge with practical applications, ensuring our graduates are ready to make an impact in their fields'
-          subHeadingStyles={{ fontSize: 16, color: Colors.bodyTextColor }}
+          subHeadingStyles={{
+            fontSize: 16,
+            color: Colors.bodyTextColor,
+            textAlign: 'center',
+          }}
         />
 
         <View
