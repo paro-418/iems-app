@@ -27,6 +27,7 @@ import { FormField } from './FormField';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Asset } from 'expo-asset';
+import { useCreatePotentialStudents } from '../services/potentialStudents/createPotentialStudents';
 
 interface IDownloadAdmissionForm {
   courseType: interestedCoursesNameTypes;
@@ -40,6 +41,7 @@ const DownloadAdmissionForm = ({
   handelModalVisibility,
 }: IDownloadAdmissionForm) => {
   const [loading, setLoading] = useState(false);
+  const { mutate: createPotentialStudentMutate } = useCreatePotentialStudents();
 
   const form = useForm<TPotentialStudentForm>({
     resolver: zodResolver(PotentialStudentFormSchema),
@@ -57,6 +59,7 @@ const DownloadAdmissionForm = ({
       setLoading(true);
       console.log('formData', formData);
       // call api to save data
+      createPotentialStudentMutate(formData);
       await downloadPdf();
     } catch (error) {
       Alert.alert('Error', 'Failed to submit form. Please try again.');
