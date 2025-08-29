@@ -17,9 +17,11 @@ import { FormField } from './FormField';
 import { Colors } from '../../constants/Colors';
 import { TPotentialStudentForm } from '../lib/interfaces/PotentialStudents.interface';
 import Heading from './Heading';
+import { useCreatePotentialStudents } from '../services/potentialStudents/createPotentialStudents';
 
 const InquiryForm = () => {
   const [loading, setLoading] = useState(false);
+  const { mutate: createPotentialStudentMutate } = useCreatePotentialStudents();
 
   const form = useForm({
     resolver: zodResolver(PotentialStudentFormSchema),
@@ -36,7 +38,9 @@ const InquiryForm = () => {
     try {
       setLoading(true);
       console.log('formData', formData);
-      // call api to save data
+      const result = createPotentialStudentMutate(formData);
+      // form.reset()
+      // ;
     } catch (error) {
       Alert.alert('Error', 'Failed to submit form. Please try again.');
       console.error('Form submission error:', error);
@@ -156,7 +160,7 @@ const InquiryForm = () => {
         >
           {loading ? (
             <View style={styles.loadingContainer}>
-              <ActivityIndicator size='small' color='#fff' />
+              <ActivityIndicator size='large' color='#fff' />
               <Text style={styles.submitButtonText}>Saving...</Text>
             </View>
           ) : (
